@@ -19,5 +19,12 @@ Mac OS X
 vagrant up
 ```
 
+### Restore database
+at vagrant
+```sh
+docker exec -i mysql /bin/bash -c 'cat > ~/dump.sql' < share/dump.sql
+docker exec -i mysql /bin/bash -c 'mysql -uroot < ~/dump.sql'
+```
+
 ## Backup
 coming soon
