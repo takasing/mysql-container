@@ -19,7 +19,10 @@ if [ $COUNT -lt 1 ]; then
 fi
 SCRIPT
 $rm_mysql = <<SCRIPT
-docker rm -f mysql
+COUNT=`docker ps | grep mysql | wc -l`
+if [ $COUNT -gt 0 ]; then
+  docker rm -f mysql
+fi
 SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
